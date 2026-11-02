@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>inclusionAI&#x27;s Ling-3.1-flash-1019: a 560B MIT-licensed MoE with 25B active and a 1M-token context | MoxBench</title><meta name="description" content="## Key points"><link rel="canonical" href="https://akijiang7.github.io/articles/inclusionai-ling-3-1-flash-1019/">
+<meta property="og:title" content="inclusionAI&#x27;s Ling-3.1-flash-1019: a 560B MIT-licensed MoE with 25B active and a 1M-token context | MoxBench"><meta property="og:description" content="## Key points"><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/inclusionai-ling-3-1-flash-1019/">
+<meta name="twitter:card" content="summary"><link rel="stylesheet" href="/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "inclusionAI's Ling-3.1-flash-1019: a 560B MIT-licensed MoE with 25B active and a 1M-token context", "datePublished": "2026-10-27", "isBasedOn": ["https://huggingface.co/inclusionAI/Ling-3.1-flash-1019"], "publisher": {"@type": "Organization", "name": "MoxBench"}, "url": "https://akijiang7.github.io/articles/inclusionai-ling-3-1-flash-1019/"}</script></head><body>
+<header><div class="wrap"><nav><a class="logo" href="/">MoxBench</a><a href="/">Home</a><a href="/articles/">Articles</a><a href="/latest/">Latest</a><a href="/models/">Models</a><a href="/licenses/">Licenses</a><a href="/archive/">Archive</a><a href="/about/">About</a></nav></div></header>
+<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / inclusionAI · 2026-10-27</p><h1>inclusionAI&#x27;s Ling-3.1-flash-1019: a 560B MIT-licensed MoE with 25B active and a 1M-token context</h1><p class="jump"><a href="#full-text">Read the full text ↓</a></p><article class="card"><h2>Key points</h2>
+<ul><li>inclusionAI released <b>Ling-3.1-flash-1019</b>, an upgraded version of Ling-3.1-flash with <b>560B total parameters, 25B active per token, and a 1M-token context window</b>.</li><li>The license is <b>MIT</b> (confirmed via the Hugging Face API).</li><li>The architecture is a hybrid-linear MoE: 63 KDA layers plus 9 Gated MLA layers in a 7:1 ratio, 512 routed experts, 8 active.</li><li>inclusionAI reports gains over the previous version: Artificial Analysis Intelligence Index v4.3.2 of 44 (up from 41), AA-Briefcase from about 1400 to 1524 Elo, and AutomationBench-AA from 62% to 68%.</li><li>It runs on SGLang (a day-0 Docker image) and vLLM. The reference server setup is 8 × H200, or 4 × GB300.</li></ul>
+<h2>What happened</h2>
+<p class="lede">inclusionAI posted Ling-3.1-flash-1019 on Hugging Face on October 27, 2026. The model card says further post-training brought &quot;significant improvements in reasoning and real-world agentic capabilities&quot;. It also reports gains on scientific benchmarks: CritPt went from 18% to 26% and SciCode from 54% to 57%. Alongside the model, inclusionAI points to a public training-content summary (PDF) in its AI-Transparency repository.</p>
+<h2>Key details</h2>
+<ul><li><b>Size:</b> 560B total, 25B active. There are 4 dense layers, 512 routed experts plus 1 shared expert, and 8 activated experts.</li><li><b>Layers:</b> 63 KDA and 9 Gated MLA (7:1). There are 64 attention heads, a hidden size of 4096 and a vocabulary of 157,184.</li><li><b>Context:</b> 1M tokens.</li><li><b>How to run:</b> with SGLang, pull <code>lmsysorg/sglang:dev-ling-3.1-flash</code>, then launch with <code>--tp 8 --ep 8 --speculative-algorithm NEXTN</code> on 8 × H200, or <code>--tp 4 --ep 4</code> on 4 × GB300. With vLLM, use the <code>vllm</code> branch with <code>--tool-call-parser ling3 --reasoning-parser ling3</code> and MTP speculative decoding. The SGLang cookbook covers H200, GB300, H800, H100 and B200.</li><li><b>Recommended sampling:</b> <code>temperature=1.0</code>, <code>top_p=0.95</code>, <code>top_k=20</code>, with <code>enable_thinking: true</code>.</li><li><b>Benchmarks:</b> all of the figures above are as reported on the model card.</li><li><b>License:</b> MIT.</li></ul>
+<hr class="ftdiv"><section id="full-text" class="fulltext"><h2>Full text</h2>
+<p><i>Full text of the original model card, reproduced under its MIT License. Images are omitted; relative links point to the source repository. Original: <a href="https://huggingface.co/inclusionAI/Ling-3.1-flash-1019">https://huggingface.co/inclusionAI/Ling-3.1-flash-1019</a>.</i></p>
+<p>🤗 <a href="https://huggingface.co/inclusionAI">Hugging Face</a>   |   🤖 <a href="https://modelscope.cn/organization/inclusionAI">ModelScope</a>   |   🐙 <a href="https://openrouter.ai/inclusionai/ling-3.1-flash">OpenRouter</a></p>
+<h3>Introduction</h3>
+<p>We introduce <b>Ling-3.1-flash-1019</b>, an upgraded version of <a href="https://huggingface.co/inclusionAI/Ling-3.1-flash">Ling-3.1-flash</a>, with <b>560B</b> total parameters, <b>25B</b> active parameters per token, and a <b>1M-token context window</b>. With further post-training optimizations, <b>Ling-3.1-flash-1019</b> demonstrates significant improvements in reasoning and real-world agentic capabilities. Its <b>AA-Briefcase</b> score rises from approximately 1400 to <b>1524 Elo</b>, while performance on <b>AutomationBench-AA</b> increases from 62% to <b>68%</b>. The model also makes gains on scientific benchmarks, including <b>CritPt</b> (18% → <b>26%</b>) and <b>SciCode</b> (54% → <b>57%</b>). Overall, it scores <b>44</b> on the <b>Artificial Analysis Intelligence Index v4.3.2</b>, up from 41 for its predecessor. These gains highlight the model&#x27;s improved capabilities in complex reasoning, multi-step task execution, and agentic workflows across diverse real-world scenarios.</p>
+<h3>Model Overview</h3>
+<p>The table and diagram below summarize the model’s specifications and architecture.</p>
+<div class="tbl"><table><thead><tr><th>Architecture</th><th>Hybrid-linear MoE</th></tr></thead><tbody><tr><td>Parameter Scale</td><td>Total 560B, Activated 25B</td></tr><tr><td>Transformer Layers</td><td>63 KDA + 9 Gated MLA (7:1)</td></tr><tr><td>Number of Dense Layers</td><td>4</td></tr><tr><td>Number of Routed Experts</td><td>512</td></tr><tr><td>Number of Shared Experts</td><td>1</td></tr><tr><td>Number of Activated Experts</td><td>8</td></tr><tr><td>Attention Heads</td><td>64</td></tr><tr><td>Hidden Size</td><td>4096</td></tr><tr><td>Expert Intermediate Size</td><td>1280</td></tr><tr><td>Dense Intermediate Size</td><td>10240</td></tr><tr><td>Vocabulary Size</td><td>157184</td></tr></tbody></table></div>
+<h3>Quickstart</h3>
+<h4>SGLang (Recommended)</h4>
+<p>The day-0 SGLang image includes Ling-3.1-flash support, MTP (NEXTN) speculative decoding, and Hopper decode optimizations:</p>
+<pre><code class=language-bash>docker pull lmsysorg/sglang:dev-ling-3.1-flash</code></pre>
+<h5>Run Inference</h5>
+<p><b>Server</b> (8 × H200, TP8 + EP8):</p>
+<pre><code class=language-bash>docker run --gpus all --network host --ipc=host --rm \
+  lmsysorg/sglang:dev-ling-3.1-flash \
+  python3 -m sglang.launch_server \
+    --model-path inclusionAI/Ling-3.1-flash \
+    --tp 8 --ep 8 \
+    --speculative-algorithm NEXTN \
+    --host 0.0.0.0 --port 30000</code></pre>
+<p>On 4 × GB300, use <code>--tp 4 --ep 4</code> instead. Hopper decode optimizations (optional, ~10% faster batch-1 decode) can be enabled with <code>SGLANG_ENABLE_FP8_BLOCK_GEMV=1</code> and <code>SGLANG_ENABLE_FUSED_KDA_OUTPUT_QUANT=1</code>.</p>
+<p><b>Client</b></p>
+<pre><code class=language-bash>curl -s http://localhost:30000/v1/chat/completions \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;model&quot;: &quot;Ling-3.1-flash&quot;,
+       &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is the capital of France?&quot;}],
+       &quot;chat_template_kwargs&quot;: {&quot;enable_thinking&quot;: true},
+       &quot;stream&quot;: true,
+       &quot;temperature&quot;: 1.0,
+       &quot;top_k&quot;: 20,
+       &quot;top_p&quot;: 0.95}&#x27;</code></pre>
+<p>Verified recipes for H200, GB300, H800, H100, and B200, plus HiCache (Mooncake L3), reasoning on/off, tool calling, and measured accuracy/speed numbers, are in the <a href="https://docs.sglang.io/cookbook/autoregressive/InclusionAI/Ling-3.1-flash">SGLang Ling-3.1-flash cookbook</a>.</p>
+<h4>vLLM</h4>
+<h5>Environment Preparation</h5>
+<pre><code class=language-bash>pip install uv
+
+uv venv ~/my_ling_env
+
+source ~/my_ling_env/bin/activate
+
+git clone -b vllm https://github.com/vllm-project/vllm.git
+
+cd vllm
+
+VLLM_USE_PRECOMPILED=1 uv pip install --editable . --torch-backend=auto</code></pre>
+<h5>Run Inference</h5>
+<p><b>Server</b></p>
+<pre><code class=language-bash>vllm serve &quot;$MODEL_PATH&quot; \
+    --port &quot;$PORT&quot; \
+    --trust-remote-code \
+    --served-model-name auto \
+    --tensor-parallel-size 8 \
+    --gpu-memory-utilization 0.85 \
+    --enable-prefix-caching \
+    --enable-expert-parallel \
+    --mamba-cache-mode align \
+    --enable-auto-tool-choice \
+    --tool-call-parser ling3 \
+    --reasoning-parser ling3 \
+    --speculative-config &#x27;{&quot;method&quot;:&quot;mtp&quot;,&quot;num_speculative_tokens&quot;:3}&#x27;</code></pre>
+<p><b>Client</b> It is recommended to use the sampling parameters (<code>temperature=1.0</code>, <code>top_p=0.95</code>, <code>top_k=20</code>) and set <code>enable_thinking</code> to <code>true</code> for better performance.</p>
+<pre><code class=language-bash>curl -s http://${MASTER_IP}:${PORT}/v1/chat/completions \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;model&quot;: &quot;auto&quot;, 
+       &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is the capital of France?&quot;}],
+       &quot;chat_template_kwargs&quot;: {&quot;enable_thinking&quot;: true},
+       &quot;stream&quot;: true,
+       &quot;temperature&quot;: 1.0, 
+       &quot;top_k&quot;: 20,
+       &quot;top_p&quot;: 0.95}&#x27;</code></pre>
+<h3>Training Content Summary</h3>
+<p>The public training-content summary identifying <b>Ling-3.1-flash</b> is available below. Please refer to the document for its covered model versions, training-content scope, summary version, and update date.</p>
+<ul><li><a href="https://huggingface.co/inclusionAI/AI-Transparency/resolve/main/Ling-3.1_TDS-Summary.pdf">Training-content summary (PDF)</a></li><li><a href="https://huggingface.co/inclusionAI/AI-Transparency">Training-content documentation index</a></li></ul>
+<p>This summary concerns training-content disclosure; it does not replace the model’s technical documentation, usage terms, or license.</p>
+</section>
+<h2>What this means for US developers</h2>
+<p>Ling-3.1-flash-1019 is a large agent-oriented model under a plain MIT license: no usage caps, no custom terms. That makes it one of the simplest frontier-scale open weights to clear with legal. With 25B active parameters it is cheaper to serve than its size suggests, but you still need a multi-GPU node (8 × H200 or 4 × GB300 in the reference setup). The model card links an OpenRouter listing, so you can try it before you self-host. The benchmark gains are inclusionAI&#x27;s own and mostly use Artificial Analysis metrics, so test it on your own agent tasks. The published training-content summary helps if your compliance team asks where the training data came from.</p>
+<p class="srcnote">Source: <a href="https://huggingface.co/inclusionAI/Ling-3.1-flash-1019">inclusionAI/Ling-3.1-flash-1019 model card on Hugging Face</a></p><p class="srcnote">Summary written by MoxBench from the official model card / README. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
+Data from Hugging Face, ModelScope, GitHub, arXiv and official blogs; license summaries are not legal advice. Built 2026-11-02.</div></footer></body></html>
