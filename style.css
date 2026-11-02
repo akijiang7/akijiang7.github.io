@@ -7,7 +7,6 @@ nav a{color:#e6f6f7;text-decoration:none;font-weight:500}nav .logo{font-weight:8
 main{padding:28px 0 60px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:0 0 18px}
 .sub{border:2px solid var(--teal);background:#eaf7f7}.sub form{display:flex;gap:8px;flex-wrap:wrap}.sub input{flex:1;min-width:220px;padding:10px;border:1px solid var(--line);border-radius:8px}
 .btn{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:10px 18px;font-weight:600;text-decoration:none;display:inline-block}
-.todo{background:#fff4d6;color:#7a5a00;font-size:12px;padding:2px 6px;border-radius:4px;font-weight:700}
 ul.feed{list-style:none;padding:0;margin:0}ul.feed li{padding:12px 0;border-bottom:1px solid var(--line)}
 .meta{color:var(--mut);font-size:14px}.badge{font-size:12px;font-weight:700;padding:2px 7px;border-radius:10px;margin-right:6px}
 .new{background:#d8f3ee;color:#0b6b5c}.updated{background:#dde9f7;color:#1f5f99}.paper{background:#ece6f7;color:#4b3a8a}.repo{background:#eef1f3;color:#3d4f57}.post{background:#fdebd9;color:#8a4b12}
