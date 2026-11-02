@@ -1,14 +1,229 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Shanghai AI Lab&#x27;s Atria Dawn: an MIT-licensed agent model built on 744B GLM-5.2 | MoxBench</title><meta name="description" content="Shanghai Artificial Intelligence Laboratory has released Atria Dawn, an agentic model built on the 744B-parameter MoE foundation model GLM-5.2. It targets "><link rel="canonical" href="https://akijiang7.github.io/articles/atria-dawn/">
-<meta property="og:title" content="Shanghai AI Lab&#x27;s Atria Dawn: an MIT-licensed agent model built on 744B GLM-5.2 | MoxBench"><meta property="og:description" content="Shanghai Artificial Intelligence Laboratory has released Atria Dawn, an agentic model built on the 744B-parameter MoE foundation model GLM-5.2. It targets "><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/atria-dawn/">
+<title>Shanghai AI Lab&#x27;s Atria Dawn: an MIT-licensed agent model built on 744B GLM-5.2 | MoxBench</title><meta name="description" content="## Summary"><link rel="canonical" href="https://akijiang7.github.io/articles/atria-dawn/">
+<meta property="og:title" content="Shanghai AI Lab&#x27;s Atria Dawn: an MIT-licensed agent model built on 744B GLM-5.2 | MoxBench"><meta property="og:description" content="## Summary"><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/atria-dawn/">
 <meta name="twitter:card" content="summary"><link rel="stylesheet" href="/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Shanghai AI Lab's Atria Dawn: an MIT-licensed agent model built on 744B GLM-5.2", "datePublished": "2026-10-23", "isBasedOn": ["https://huggingface.co/internlm/Atria-Dawn"], "publisher": {"@type": "Organization", "name": "MoxBench"}, "url": "https://akijiang7.github.io/articles/atria-dawn/"}</script></head><body>
 <header><div class="wrap"><nav><a class="logo" href="/">MoxBench</a><a href="/">Home</a><a href="/articles/">Articles</a><a href="/latest/">Latest</a><a href="/models/">Models</a><a href="/licenses/">Licenses</a><a href="/archive/">Archive</a><a href="/about/">About</a></nav></div></header>
-<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / Shanghai AI Laboratory / InternLM · 2026-10-23</p><h1>Shanghai AI Lab&#x27;s Atria Dawn: an MIT-licensed agent model built on 744B GLM-5.2</h1><article class="card"><p class="lede">Shanghai Artificial Intelligence Laboratory has released Atria Dawn, an agentic model built on the 744B-parameter MoE foundation model GLM-5.2. It targets research and engineering work that involves tool use and long multi-step tasks. The weights are released under the MIT license with a 512K-token context window.</p>
+<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / Shanghai AI Laboratory / InternLM · 2026-10-23</p><h1>Shanghai AI Lab&#x27;s Atria Dawn: an MIT-licensed agent model built on 744B GLM-5.2</h1><p class="jump"><a href="#full-text">Read the full text ↓</a></p><article class="card"><h2>Summary</h2>
+<p class="lede">Shanghai Artificial Intelligence Laboratory has released Atria Dawn, an agentic model built on the 744B-parameter MoE foundation model GLM-5.2. It targets research and engineering work that involves tool use and long multi-step tasks. The weights are released under the MIT license with a 512K-token context window.</p>
 <h2>What happened</h2>
 <p>The lab describes Atria Dawn as a model meant to push open-ended problems toward &quot;executable, verifiable, and reproducible&quot; results. In practice that means covering the whole loop: analyzing the problem, designing a solution, calling tools, writing code, running experiments, analyzing results and recovering from failures. The model card names four focus areas. <b>Discovery</b> covers deep research and turning questions into experimental plans. <b>Creation</b> covers software, apps, games, visualizations and ML systems. <b>Delivery</b> covers reports, presentations and other structured documents. <b>Cybersecurity</b> covers analyzing, validating and fixing vulnerabilities in authorized environments.</p>
 <h2>Key details</h2>
 <ul><li><b>Base model:</b> GLM-5.2, a 744B-parameter MoE.</li><li><b>Variants:</b> Atria Dawn and Atria Dawn FP8 (full release, 512K context), plus Atria Dawn Preview and Preview FP8 (256K context). All are on Hugging Face and ModelScope.</li><li><b>Modality:</b> text input only. The hosted endpoint rejects images.</li><li><b>License:</b> MIT for both code and weights.</li><li><b>How to run locally:</b> SGLang v0.5.13.post1+ or vLLM v0.23.0+, using the existing GLM-5.2 recipes.</li><li><b>Hosted access:</b> an international API console, with OpenAI-compatible (<code>https://discovery-api.intern-ai.org.cn/v1</code>) and Anthropic-compatible endpoints. The model card includes configuration snippets for Codex and other agent harnesses. The model name is <code>Atria-Dawn</code>.</li><li><b>Benchmarks:</b> the lab publishes a comparison table covering search, coding, tool use, productivity and security tasks, which it says matches its official website. We have not reproduced it here. See the source.</li></ul>
 <h2>What this means for US developers</h2>
 <p>Atria Dawn is a large agent-tuned model under a fully permissive license, and that combination is uncommon. MIT on the weights means no user caps or usage clauses to negotiate. Because it inherits GLM-5.2&#x27;s architecture, existing vLLM and SGLang setups for GLM should work with little change. Self-hosting a 744B MoE is still a multi-node job, even with the FP8 variant. Note too that the hosted API runs on Chinese infrastructure (intern-ai.org.cn), which some US companies will rule out for data-governance reasons. Self-hosting avoids that.</p>
-<p class="srcnote">Source: <a href="https://huggingface.co/internlm/Atria-Dawn">internlm/Atria-Dawn model card on Hugging Face</a></p><p class="srcnote">Translated and edited by MoxBench from the official model card / README. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
+<hr class="ftdiv"><section id="full-text" class="fulltext"><h2>Full text</h2>
+<p><i>Full text of the original model card, reproduced under its MIT License.. Images and badges are omitted; relative links point to the source repository. Original: <a href="https://huggingface.co/internlm/Atria-Dawn">https://huggingface.co/internlm/Atria-Dawn</a>.</i></p>
+<h3>Atria Dawn</h3>
+<p><b>From Research Questions to Verifiable Results</b></p>
+<h3>🌅 Introduction</h3>
+<p><b>Atria Dawn</b> is a new-generation agentic model developed by the <b>Shanghai Artificial Intelligence Laboratory</b>. Built on the <b>744B-parameter MoE GLM-5.2</b> foundation model, it targets research and engineering scenarios that demand continuous environmental understanding, tool use, and multi-step task completion.</p>
+<p>The model is designed to drive open-ended problems toward <b>executable, verifiable, and reproducible</b> results. By combining task objectives with environmental feedback, it supports the full loop of problem analysis, solution design, tool use, code implementation, experiment execution, result analysis, and failure recovery.</p>
+<p>Atria Dawn empowers agentic tasks across four dimensions, with a particular focus on end-to-end delivery in real-world productivity scenarios such as scientific automation and office work:</p>
+<div class="tbl"><table><thead><tr><th></th><th>Dimension</th><th>What it covers</th></tr></thead><tbody><tr><td>🔍</td><td><b>Discovery</b></td><td>Retrieving and organizing evidence, conducting deep research, and turning research questions into executable experimental plans.</td></tr><tr><td>🛠️</td><td><b>Creation</b></td><td>Building software, interactive applications, games, data visualizations, and machine learning systems.</td></tr><tr><td>📦</td><td><b>Delivery</b></td><td>Transforming documents, data, and design requirements into reports, presentations, and other structured deliverables.</td></tr><tr><td>🛡️</td><td><b>Cybersecurity</b></td><td>Analyzing security issues, validating vulnerabilities, applying fixes, and performing re-validation in authorized environments.</td></tr></tbody></table></div>
+<h3>📥 Model Downloads</h3>
+<div class="tbl"><table><thead><tr><th>Model</th><th>Description</th><th>Context</th><th>Hugging Face</th><th>ModelScope</th></tr></thead><tbody><tr><td><b>Atria Dawn</b></td><td>Instruct model (full release)</td><td>512K</td><td><a href="https://huggingface.co/internlm/Atria-Dawn">🤗 Model</a></td><td><a href="https://www.modelscope.cn/models/Shanghai_AI_Laboratory/Atria-Dawn">🔗 Model</a></td></tr><tr><td><b>Atria Dawn FP8</b></td><td>FP8-quantized Instruct model (full release)</td><td>512K</td><td><a href="https://huggingface.co/internlm/Atria-Dawn-FP8">🤗 Model</a></td><td><a href="https://www.modelscope.cn/models/Shanghai_AI_Laboratory/Atria-Dawn-FP8">🔗 Model</a></td></tr><tr><td><b>Atria Dawn Preview</b></td><td>Instruct model</td><td>256K</td><td><a href="https://huggingface.co/internlm/Atria-Dawn-Preview">🤗 Model</a></td><td><a href="https://www.modelscope.cn/models/Shanghai_AI_Laboratory/Atria-Dawn-Preview">🔗 Model</a></td></tr><tr><td><b>Atria Dawn Preview FP8</b></td><td>FP8-quantized Instruct model</td><td>256K</td><td><a href="https://huggingface.co/internlm/Atria-Dawn-Preview-FP8">🤗 Model</a></td><td><a href="https://www.modelscope.cn/models/Shanghai_AI_Laboratory/Atria-Dawn-Preview-FP8">🔗 Model</a></td></tr></tbody></table></div>
+<p>The model name is <b>Atria Dawn</b>. Use <code>Atria-Dawn</code> as the <code>model</code> value in API requests.</p>
+<h3>📊 Evaluation Results</h3>
+<p>We evaluated Atria Dawn and Atria Dawn Preview across search, coding, tool use, productivity, and security benchmarks. The full table below matches the <a href="https://atria-asi.ai/">official website</a>.</p>
+<div class="tbl"><table><thead><tr><th>Benchmark</th><th>Atria Dawn</th><th>Atria Dawn Preview</th><th>DeepSeek V4 Pro 0813</th><th>KIMI K3</th><th>Qwen 3.8 Max</th><th>GLM 5.3</th><th>GPT 5.6 sol</th><th>Claude Opus 5</th></tr></thead><tbody><tr><td>AutomationBench</td><td><b>54.7</b></td><td>53.8</td><td>41.7</td><td>45.9</td><td>49.7</td><td>52.5</td><td>45.7</td><td>49.4</td></tr><tr><td>CyberGym</td><td><b>86.8</b></td><td>86.5</td><td>83.3</td><td>78.7</td><td>73.8</td><td>84.5</td><td>83.6</td><td>–</td></tr><tr><td>SkillsBench</td><td><b>67.8</b></td><td>66.4</td><td>65.0</td><td>51.9</td><td>66.7</td><td>63.3</td><td>62.5</td><td>63.7</td></tr><tr><td>WideSearch</td><td><b>84.6</b></td><td>81.9</td><td>81.8</td><td>79.6</td><td>81.9</td><td>82.7</td><td>83.3</td><td>84.0</td></tr><tr><td>MLE-bench Lite</td><td>88.2</td><td>86.2</td><td>86.8</td><td>85.8</td><td>81.3</td><td>80.8</td><td><b>88.9</b></td><td>88.0</td></tr><tr><td>Workspace-Bench-Lite</td><td>70.0</td><td>68.2</td><td>62.1</td><td>64.9</td><td>68.7</td><td><b>71.7</b></td><td>60.5</td><td>70.1</td></tr><tr><td>Workspace-Bench</td><td>66.1</td><td>65.0</td><td>58.2</td><td>63.5</td><td><b>68.0</b></td><td>67.4</td><td>56.0</td><td>65.8</td></tr><tr><td>PaperBench</td><td>89.6</td><td>87.0</td><td>87.4</td><td>80.5</td><td><b>94.1</b></td><td>86.9</td><td>92.8</td><td>88.9</td></tr><tr><td>JobBench</td><td>57.5</td><td>50.3</td><td>54.1</td><td>54.3</td><td>52.7</td><td>58.2</td><td>45.4</td><td><b>68.0</b></td></tr><tr><td>GDPval</td><td>1594.2</td><td>1583.8</td><td>1493.3</td><td>1606.8</td><td>1710.9</td><td>1643.1</td><td>1611.1</td><td><b>1714.0</b></td></tr><tr><td>DeepResearch Bench II</td><td>51.2</td><td>51.1</td><td>46.6</td><td>51.3</td><td>49.2</td><td>52.7</td><td>50.7</td><td><b>54.1</b></td></tr><tr><td>SpreadsheetBench 2</td><td>33.0</td><td>31.5</td><td>29.3</td><td><b>35.8</b></td><td>34.9</td><td>32.1</td><td>32.7</td><td>33.6</td></tr><tr><td>τ³-bench Banking</td><td>43.3</td><td>41.2</td><td>44.3</td><td>37.1</td><td><b>55.2</b></td><td>40.2</td><td>46.9</td><td>48.7</td></tr><tr><td>Terminal-Bench 2.1</td><td>81.0</td><td>78.3</td><td>77.0</td><td>84.0</td><td>89.6</td><td>86.0</td><td>86.2</td><td><b>90.2</b></td></tr><tr><td>SWE-bench Pro</td><td>61.7</td><td>59.6</td><td>58.4</td><td>62.0</td><td>65.3</td><td>60.3</td><td>59.8</td><td><b>76.5</b></td></tr><tr><td>NL2Repo-Bench</td><td>50.0</td><td>51.4</td><td>49.5</td><td>63.1</td><td>63.2</td><td>54.8</td><td>60.7</td><td><b>79.9</b></td></tr><tr><td>Harbor-Index</td><td>17.3</td><td>17.3</td><td>17.0</td><td>24.3</td><td>25.8</td><td>20.0</td><td>35.8</td><td><b>41.0</b></td></tr><tr><td>DeepSWE</td><td>49.3</td><td>–</td><td>54.9</td><td>70.6</td><td>67.0</td><td>67.3</td><td>70.6</td><td><b>72.6</b></td></tr><tr><td>Harvey LAB</td><td><b>27.5</b></td><td>–</td><td>6.7</td><td>25.4</td><td>24.2</td><td>22.5</td><td>5.0</td><td>22.7</td></tr><tr><td>BFCL V4</td><td><b>78.4</b></td><td>77.0</td><td>71.4</td><td>69.1</td><td>–</td><td>74.1</td><td>–</td><td>–</td></tr><tr><td>DeepSearchQA</td><td><b>96.5</b></td><td>96.0</td><td>–</td><td>95.9</td><td>–</td><td>94.7</td><td>93.2</td><td>–</td></tr><tr><td>OfficeQA Pro</td><td>67.1</td><td>–</td><td>66.2</td><td>65.4</td><td>66.2</td><td>65.8</td><td>66.4</td><td><b>67.2</b></td></tr><tr><td>BrowseComp</td><td>91.3</td><td><b>92.5</b></td><td>83.4</td><td>91.2</td><td>–</td><td>89.6</td><td>92.2</td><td>90.8</td></tr></tbody></table></div>
+<blockquote><b>Bold</b> marks the best score in each row. <code>–</code> indicates the result is unavailable.</blockquote>
+<h3>🚀 Deployment &amp; Online Access</h3>
+<p>Atria Dawn supports both local deployment and hosted access.</p>
+<h4>Online Access</h4>
+<p>Use the service endpoint corresponding to your region.</p>
+<div class="tbl"><table><thead><tr><th>Region</th><th>Access</th></tr></thead><tbody><tr><td>🌐 <b>International</b></td><td><a href="https://discovery.intern-ai.org.cn/token-plan/home?lang=en-US">API Console</a></td></tr><tr><td>🇨🇳 <b>China</b></td><td><a href="https://discovery.intern-ai.org.cn/token-plan/home">API Console</a></td></tr></tbody></table></div>
+<h4>Local Deployment</h4>
+<div class="tbl"><table><thead><tr><th>Framework</th><th>Minimum Version</th><th>Guide</th></tr></thead><tbody><tr><td><a href="https://github.com/sgl-project/sglang"><b>SGLang</b></a></td><td><code>v0.5.13.post1+</code></td><td><a href="https://cookbook.sglang.io/autoregressive/GLM/GLM-5.2">Cookbook</a></td></tr><tr><td><a href="https://github.com/vllm-project/vllm"><b>vLLM</b></a></td><td><code>v0.23.0+</code></td><td><a href="https://recipes.vllm.ai/zai-org/GLM-5.2">Recipes</a></td></tr></tbody></table></div>
+<p>Use <code>https://discovery-api.intern-ai.org.cn/v1</code> for OpenAI-compatible clients, and <code>https://discovery-api.intern-ai.org.cn</code> for Anthropic-compatible clients and SystemOne.</p>
+<h4>Codex</h4>
+<p>Add a custom provider to <code>~/.codex/config.toml</code>. Codex uses the Responses API.</p>
+<pre><code class=language-toml>model = &quot;Atria-Dawn&quot;
+model_provider = &quot;atria&quot;
+[model_providers.atria]
+name = &quot;Atria&quot;
+base_url = &quot;https://discovery-api.intern-ai.org.cn/v1&quot;
+env_key = &quot;ATRIA_API_KEY&quot;
+wire_api = &quot;responses&quot;</code></pre>
+<h5>Restricting input to text only</h5>
+<p><b>Atria Dawn</b> accepts text input only. By default Codex assumes every model is multimodal and will attach images from <code>-i/--image</code> or a TUI paste, which the endpoint rejects with <code>400 Atria-Dawn is not a multimodal model</code>. Declare the model&#x27;s modalities so Codex strips image input on the client side instead.</p>
+<h6>Step 1 — Create a model catalog file</h6>
+<p>Save this as <code>~/.codex/atria-catalog.json</code>:</p>
+<pre><code class=language-json>{
+  &quot;models&quot;: [
+    {
+      &quot;slug&quot;: &quot;Atria-Dawn&quot;,
+      &quot;display_name&quot;: &quot;Atria Dawn&quot;,
+      &quot;base_instructions&quot;: &quot;You are a coding agent running in the Codex CLI. You collaborate with the user in a shared workspace to accomplish their software engineering goals.\n\nYou can only receive text input. Images, screenshots, PDFs, and other binary attachments are not available to you. If the user refers to an attachment you cannot see, say so plainly and ask them to paste the relevant text instead.&quot;,
+      &quot;supported_reasoning_levels&quot;: [
+        { &quot;effort&quot;: &quot;low&quot;, &quot;description&quot;: &quot;Fast responses with lighter reasoning&quot; },
+        { &quot;effort&quot;: &quot;medium&quot;, &quot;description&quot;: &quot;Balances speed and reasoning depth&quot; },
+        { &quot;effort&quot;: &quot;high&quot;, &quot;description&quot;: &quot;Greater reasoning depth for complex problems&quot; }
+      ],
+      &quot;shell_type&quot;: &quot;unified_exec&quot;,
+      &quot;visibility&quot;: &quot;list&quot;,
+      &quot;supported_in_api&quot;: true,
+      &quot;priority&quot;: 1,
+      &quot;support_verbosity&quot;: false,
+      &quot;truncation_policy&quot;: { &quot;mode&quot;: &quot;tokens&quot;, &quot;limit&quot;: 10000 },
+      &quot;experimental_supported_tools&quot;: [],
+      &quot;context_window&quot;: 512000,
+      &quot;max_context_window&quot;: 512000,
+      &quot;input_modalities&quot;: [&quot;text&quot;]
+    }
+  ]
+}</code></pre>
+<p><code>&quot;input_modalities&quot;: [&quot;text&quot;]</code> is the setting that disables multimodal input.</p>
+<p>Set <code>context_window</code> / <code>max_context_window</code> to the model&#x27;s real limit — Codex uses these to budget the prompt and decide when to auto-compact. Without them it falls back to a conservative default, which wastes usable context.</p>
+<p>All other fields are required by the parser — omitting any one fails with <code>missing field &lt;name&gt;</code> and Codex will not start.</p>
+<h6>Step 2 — Point your config at it</h6>
+<pre><code class=language-toml>model = &quot;Atria-Dawn&quot;
+model_provider = &quot;atria&quot;
+model_catalog_json = &quot;~/.codex/atria-catalog.json&quot;
+[features]
+view_image = false
+[model_providers.atria]
+name = &quot;Atria&quot;
+base_url = &quot;https://discovery-api.intern-ai.org.cn/v1&quot;
+env_key = &quot;ATRIA_API_KEY&quot;
+wire_api = &quot;responses&quot;</code></pre>
+<p><code>features.view_image = false</code> is optional — it removes the image-viewing tool so the model doesn&#x27;t attempt a call that would be refused.</p>
+<blockquote><b>Important:</b> <code>model_catalog_json</code> <b>replaces</b> the model catalog, it does not merge with it. Any model not listed in your file falls back to default metadata — which assumes multimodal input — and logs <code>warning: Model metadata for &lt;slug&gt; not found</code>. If you switch models with <code>-m</code> or by editing <code>model</code>, add that model to the same file, or the text-only restriction will not apply to it.</blockquote>
+<p>Requires Codex CLI 0.154.0 or later.</p>
+<h4>Claude Code</h4>
+<pre><code class=language-Python>#!/usr/bin/env python3
+&quot;&quot;&quot;
+PreToolUse hook: block the Read tool from reading PDF and image files.
+&quot;&quot;&quot;
+import json
+import sys
+IMAGE_EXTENSIONS = (
+    &quot;.apng&quot;,
+    &quot;.avif&quot;,
+    &quot;.bmp&quot;,
+    &quot;.gif&quot;,
+    &quot;.heic&quot;,
+    &quot;.heif&quot;,
+    &quot;.ico&quot;,
+    &quot;.jfif&quot;,
+    &quot;.jpeg&quot;,
+    &quot;.jpg&quot;,
+    &quot;.jxl&quot;,
+    &quot;.png&quot;,
+    &quot;.svg&quot;,
+    &quot;.tif&quot;,
+    &quot;.tiff&quot;,
+    &quot;.webp&quot;,
+)
+def main():
+    hook_input = json.loads(sys.stdin.read())
+    file_path = hook_input.get(&quot;tool_input&quot;, {}).get(&quot;file_path&quot;, &quot;&quot;)
+    if file_path.lower().endswith(&quot;.pdf&quot;):
+        reason = &quot;Reading PDF files with the Read tool is not allowed.&quot;
+    elif file_path.lower().endswith(IMAGE_EXTENSIONS):
+        reason = &quot;Reading image files with the Read tool is not allowed.&quot;
+    else:
+        sys.exit(0)
+    output = {
+        &quot;hookSpecificOutput&quot;: {
+            &quot;hookEventName&quot;: &quot;PreToolUse&quot;,
+            &quot;permissionDecision&quot;: &quot;deny&quot;,
+            &quot;permissionDecisionReason&quot;: reason,
+        }
+    }
+    print(json.dumps(output, ensure_ascii=False))
+    sys.exit(0)
+if __name__ == &quot;__main__&quot;:
+    main()</code></pre>
+<p>Please save the above code script as ${Target_dir}/block_pdf_image_read.py, and be sure to use an absolute path.</p>
+<p>Add it to ~/claude_dir/settings.json. This can implement interception of multimodal inputs, such as images and PDFs, in PreToolUse.</p>
+<pre><code class=language-Bash>&quot;hooks&quot;: {
+    &quot;PreToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Read&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;python3 ${Target_dir}/block_pdf_image_read.py&quot;,
+            &quot;timeout&quot;: 5
+          }
+        ]
+      },
+      {
+        &quot;matcher&quot;: &quot;&quot;,
+        &quot;hooks&quot;: []
+      }
+    ]
+}</code></pre>
+<h4>Kimi Code</h4>
+<p>Add a custom provider to <code>~/.kimi-code/config.toml</code>. Kimi Code talks to Atria over the OpenAI-compatible Chat Completions API.</p>
+<p>This example targets Kimi Code 0.43.1 and later. Check your version first; config fields can vary between versions.</p>
+<pre><code class=language-bash>kimi --version
+cp -a ~/.kimi-code/config.toml ~/.kimi-code/config.toml.bak</code></pre>
+<h5>1. Write the provider and model into your user config</h5>
+<p>Merge this into <code>~/.kimi-code/config.toml</code>. Keep <code>default_model</code> at the top level, before the tables. Update existing entries instead of duplicating fields or tables. Your <code>atr_...</code> key goes on the <code>api_key</code> line — keys are created in the Atria console and displayed only once.</p>
+<pre><code class=language-toml>default_model = &quot;atria/Atria-Dawn&quot;
+
+[providers.atria]
+type = &quot;openai&quot;
+# must include /v1 — Kimi appends /chat/completions verbatim
+base_url = &quot;https://discovery-api.intern-ai.org.cn/v1&quot;
+# literal value only: no ${VAR} expansion, and OPENAI_API_KEY is not read
+api_key = &quot;ATRIA_API_KEY&quot;
+
+[models.&quot;atria/Atria-Dawn&quot;]
+provider = &quot;atria&quot;
+# case-sensitive wire name, separate from the section key above (a local alias)
+model = &quot;Atria-Dawn&quot;
+display_name = &quot;Atria Dawn&quot;
+# required — without it the entry silently fails to load. Keep at the real limit
+# so context budgeting and compaction work.
+max_context_size = 512000
+# the max_tokens sent on the wire. Without it Kimi sends max_context_size
+# instead, which Atria rejects (valid range is 1-65536).
+max_output_size = 65536
+# text-only model: adding image_in fails with &quot;is not a multimodal model&quot;.
+# Declare tool_use explicitly, or Kimi treats capabilities as unknown.
+# &quot;thinking&quot; is what turns reasoning on — without it the effort is forced to
+# &quot;off&quot; and no reasoning_effort is sent.
+capabilities = [&quot;tool_use&quot;, &quot;thinking&quot;]
+# without support_efforts the effort stays the opaque &quot;on&quot;, which sends no
+# reasoning_effort at all. Listing them makes /think and the picker work.
+support_efforts = [&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;xhigh&quot;, &quot;max&quot;]
+default_effort = &quot;max&quot;
+# required to allow turning thinking off. Omitting it fails with &quot;reasons by
+# default but declares no off effort&quot;.
+off_effort = &quot;none&quot;</code></pre>
+<p>Keep the file private, since the key is stored in plaintext:</p>
+<pre><code class=language-bash>chmod 600 ~/.kimi-code/config.toml</code></pre>
+<h5>2. Restart and verify</h5>
+<p>Validate the config, then send a text-only task.</p>
+<pre><code class=language-bash>kimi doctor
+kimi provider list
+kimi</code></pre>
+<p>Expected:</p>
+<pre><code>OK config.toml  /home/&lt;user&gt;/.kimi-code/config.toml
+All checked config files are valid.
+
+atria  type=openai  models=1  source=inline
+Default model: atria/Atria-Dawn</code></pre>
+<p>If <code>atria</code> is missing from the provider list, the model entry failed to resolve — most often an absent <code>max_context_size</code>.</p>
+<h3>📄 License</h3>
+<p>The code and model weights in this repository are released under the <a href="https://huggingface.co/internlm/Atria-Dawn/blob/main/LICENSE">MIT License</a>.</p>
+<h3>📮 Contact</h3>
+<p>Questions, suggestions, or collaboration ideas are welcome:</p>
+<ul><li>🐛 <b>Issues &amp; feature requests</b> — open an issue on <a href="https://github.com/atria-asi/Atria-Dawn-Preview/issues">GitHub</a></li><li>💬 <b>Community</b> — join us on <a href="https://discord.gg/jT8SDt8up">Discord</a></li><li>📱 <b>WeChat</b> — scan the QR code below to join Atria community group 7</li><li>🐦 <b>Updates</b> — follow <a href="https://x.com/AtriaASI">@AtriaASI</a> on X</li></ul>
+<h3>Citation</h3>
+<pre><code>@misc{guo2026atriadawndawnagentic,
+      title={Atria Dawn: The Dawn of Agentic Superintelligence}, 
+      author={Honglin Guo and Tao Gui and Yicheng Chen and Guanting Dong and Qiming Ge and Yuyang Hu and Zixian Huang and Jiajie Jin and Alexander Lam and Yining Li and Jiahang Lin and Yanjiang Liu and Xinyu Lu and Haijun Lv and Junlin Shang and Qisheng Su and Guoqiang Wang and Rui Wang and Zhecan Wang and Hao Xiang and Xinchen Xie and Shuhao Xing and Xiaoyu Xing and Wanghan Xu and Xinyu Yang and Yajie Yang and Chengfeng Zhao and Haoran Zhao and Ruojun Zhou and Yunhua Zhou and Yicheng Zou and Kun Cai and Qiye Cai and Xinmeng Che and Haodong Chen and Jiabei Chen and Jiahao Chen and Jiayi Chen and Yujia Chen and Lizhi Cui and Youheng Dai and Xin Deng and Yi Dong and Shihan Dou and Chenya Gu and Xu Guo and Ding Han and Feiyang Hao and Haotan He and Jie Hou and Binze Hu and Zijian Hu and Junhao Huang and Huicheng Jiang and Jiazhen Jiang and Shufan Jiang and Jiahao Kuang and Bowen Lai and Bo Li and Jiaqiang Li and Peng Li and Qilong Li and Zhuoqun Li and Jiaxiang Liu and Shuainan Liu and Tong Liu and Yi Liu and Zhonghang Lu and Jianwen Luo and Yanyi Luo and Huijie Lv and Ningsheng Ma and Zerun Ma and Houcheng Min and Chengjun Pan and Qiyuan Peng and Xiaoxuan Peng and Jianmin Qian and Jiantao Qiu and Wanying Ren and Huayu Sha and Jifei Shan and Zixin Shang and Bing Shao and Zhuohui Sheng and Jiayang Shi and Yang Shu and Aierpanjiang Simayi and Sirui Song and Yuxiao Song and Zhe Sun and Zhichao Sun and Wenzhe Tan and Wenhui Tian and Zhongbo Tian and Hanchen Wang and Pengbo Wang and Rui Wang and Yiding Wang and Yuhui Wang and Zhiheng Xi and Caijun Xu and Chao Xu and Yongfeng Xu and Xiaolei Yang and Zhixiong Yang and Qian Yao and Shihong Yi and Yuankai Ying and Jia Yu and Dingbo Yuan and Hao Yuan and Junjie Yuan and Bo Zhang and Caixian Zhang and Qiuyinzhe Zhang and Jiyuan Zhao and Penghao Zhao and Ying Zhao and Pujun Zheng and Xiaoxue Zhong and Xiaohao Zhou and Xinyu Zhou and Dongsheng Zhu and Guanru Zhu and Yulun Zhu and Yaojie Lu and Tao Ji and Hongyu Lin and Yutao Zhu and Pengfei Cao and Guoxiu He and Xianpei Han and Ben He and Zhicheng Dou and Kang Liu and Qi Zhang and Le Sun and Jun Zhao and Ji-Rong Wen and Xuanjing Huang and Yu-Gang Jiang and Bowen Zhou},
+      year={2026},
+      eprint={2609.15818},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2609.15818},
+      doi={10.48550/ARXIV.2609.15818},
+}</code></pre>
+<p>Built by the Shanghai Artificial Intelligence Laboratory.</p>
+</section>
+<p class="srcnote">Source: <a href="https://huggingface.co/internlm/Atria-Dawn">internlm/Atria-Dawn model card on Hugging Face</a></p><p class="srcnote">Summary written by MoxBench from the official model card / README. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
 Data from Hugging Face, ModelScope, GitHub, arXiv and official blogs; license summaries are not legal advice. Built 2026-11-02.</div></footer></body></html>

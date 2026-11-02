@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kimi Code CLI in Moonshot&#x27;s own words: full English translation of the Chinese README | MoxBench</title><meta name="description" content="## Key points"><link rel="canonical" href="https://akijiang7.github.io/articles/kimi-code-cli-zh/">
+<meta property="og:title" content="Kimi Code CLI in Moonshot&#x27;s own words: full English translation of the Chinese README | MoxBench"><meta property="og:description" content="## Key points"><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/kimi-code-cli-zh/">
+<meta name="twitter:card" content="summary"><link rel="stylesheet" href="/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Kimi Code CLI in Moonshot's own words: full English translation of the Chinese README", "datePublished": "2026-11-02", "isBasedOn": ["https://github.com/MoonshotAI/kimi-code/blob/main/README.zh-CN.md", "https://github.com/MoonshotAI/kimi-code"], "publisher": {"@type": "Organization", "name": "MoxBench"}, "url": "https://akijiang7.github.io/articles/kimi-code-cli-zh/"}</script></head><body>
+<header><div class="wrap"><nav><a class="logo" href="/">MoxBench</a><a href="/">Home</a><a href="/articles/">Articles</a><a href="/latest/">Latest</a><a href="/models/">Models</a><a href="/licenses/">Licenses</a><a href="/archive/">Archive</a><a href="/about/">About</a></nav></div></header>
+<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / Moonshot AI (Kimi) · 2026-11-02</p><h1>Kimi Code CLI in Moonshot&#x27;s own words: full English translation of the Chinese README</h1><p class="jump"><a href="#full-text">Read the full text ↓</a></p><article class="card"><h2>Key points</h2>
+<ul><li>Kimi Code CLI is Moonshot AI&#x27;s open-source terminal coding agent. It reads and writes code, runs shell commands, searches files and fetches web pages.</li><li>It ships as a single binary, so the installed CLI needs no Node.js. Install with one curl (macOS/Linux) or PowerShell (Windows) command.</li><li>It works with Kimi models out of the box and can point to other compatible providers. Log in with Kimi Code OAuth or a Moonshot AI Open Platform API key.</li><li>Features include video input, conversational MCP setup, a plugin marketplace with trust levels, <code>coder</code>/<code>explore</code>/<code>plan</code> subagents, lifecycle hooks and editor integration via ACP.</li><li>MIT license.</li></ul>
+<hr class="ftdiv"><section id="full-text" class="fulltext"><h2>Full text</h2>
+<p><i>Translated from &quot;Kimi Code CLI&quot; README (Simplified Chinese, README.zh-CN.md), <a href="https://github.com/MoonshotAI/kimi-code/blob/main/README.zh-CN.md">https://github.com/MoonshotAI/kimi-code/blob/main/README.zh-CN.md</a>, under the MIT License. Translation by MoxBench. Badges and images are omitted; relative links point to the GitHub repository.</i></p>
+<h3>Kimi Code CLI</h3>
+<p><a href="https://moonshotai.github.io/kimi-code/zh/">Documentation</a> · <a href="https://github.com/MoonshotAI/kimi-code/issues">Issues</a> · <a href="https://github.com/MoonshotAI/kimi-code/blob/main/README.md">English</a></p>
+<h3>What is Kimi Code CLI</h3>
+<p>Kimi Code CLI is an AI coding agent that runs in your terminal. It can help you read and write code, execute shell commands, search files and fetch web pages, and it decides its next action on its own based on feedback. It works out of the box with Moonshot AI&#x27;s Kimi models and can also point to other compatible providers.</p>
+<h3>Installation</h3>
+<p>We recommend the official install script; there is no need to install Node.js beforehand.</p>
+<ul><li><b>macOS / Linux</b>:</li></ul>
+<pre><code class=language-sh>curl -fsSL https://code.kimi.com/kimi-code/install.sh | bash</code></pre>
+<ul><li><b>Windows (PowerShell)</b>:</li></ul>
+<pre><code class=language-powershell>irm https://code.kimi.com/kimi-code/install.ps1 | iex</code></pre>
+<blockquote>Windows users also need to install <a href="https://gitforwindows.org/">Git for Windows</a> before first launch; Kimi Code CLI uses its Git Bash as the shell environment. If Git Bash is installed in a non-standard path, set <code>KIMI_SHELL_PATH</code> to the absolute path of <code>bash.exe</code>.</blockquote>
+<p>Then run in a new terminal session:</p>
+<pre><code class=language-sh>kimi --version</code></pre>
+<p>For npm installation, upgrade and uninstall, see <a href="https://moonshotai.github.io/kimi-code/zh/guides/getting-started">Getting Started</a>.</p>
+<h3>Quick start</h3>
+<p>Enter your project directory and start the interactive interface:</p>
+<pre><code class=language-sh>cd your-project
+kimi</code></pre>
+<p>On first launch, type <code>/login</code> in Kimi Code CLI and choose Kimi Code OAuth or a Moonshot AI Open Platform API key to log in. Once logged in, you can start by having it get familiar with the project:</p>
+<pre><code>Take a look at this project&#x27;s directory structure and briefly explain what each directory does</code></pre>
+<h3>Core features</h3>
+<ul><li><b>Binary distribution, zero environment dependencies.</b> Install with one command; no need to pre-install Node.js, no fiddling with PATH, and no conflicts with global modules.</li><li><b>Lightning-fast startup.</b> The TUI is ready in milliseconds, so opening a new session carries no mental overhead.</li><li><b>Polished TUI experience.</b> An end-to-end refined interface, optimized for long, focused agent sessions.</li><li><b>Video as input.</b> Drag screen recordings or demo videos into the conversation and let the agent see things that are hard to describe in words: turn a reference clip into a LUT, cut a long video into a short one, turn a screen recording into code, and more.</li><li><b>AI-native MCP configuration.</b> Add, edit and authenticate MCP servers conversationally through <code>/mcp-config</code>, with no hand-written JSON.</li><li><b>Rich plugin ecosystem.</b> Install skills, MCP servers and data sources from the plugin marketplace or any GitHub repository; every install shows the trust level of its source.</li><li><b>Subagents for focused parallel work.</b> Built-in <code>coder</code>, <code>explore</code> and <code>plan</code> subagents handle subtasks in isolated contexts, keeping the main conversation clean.</li><li><b>Lifecycle hooks.</b> Run local commands at key points: intercept high-risk tool calls, audit decisions, send desktop notifications, or connect your own automation scripts.</li><li><b>Editor / IDE integration (ACP).</b> Use <code>kimi acp</code> to let Zed, JetBrains or any <a href="https://agentclientprotocol.com/">Agent Client Protocol</a> client drive sessions directly.</li></ul>
+<h3>Using it in your editor (ACP)</h3>
+<p>Kimi Code CLI supports the <a href="https://agentclientprotocol.com/">Agent Client Protocol</a>, so ACP-compatible editors / IDEs (Zed, JetBrains…) can drive sessions directly over stdio. Log in once, then point your editor at the <code>kimi acp</code> subcommand; no repeated login is needed.</p>
+<p>Taking Zed as an example, add the following to <code>~/.config/zed/settings.json</code>:</p>
+<pre><code class=language-json>{
+  &quot;agent_servers&quot;: {
+    &quot;Kimi Code CLI&quot;: {
+      &quot;type&quot;: &quot;custom&quot;,
+      &quot;command&quot;: &quot;kimi&quot;,
+      &quot;args&quot;: [&quot;acp&quot;],
+      &quot;env&quot;: {}
+    }
+  }
+}</code></pre>
+<p>Then start a new conversation in Zed&#x27;s Agent panel. For JetBrains configuration and troubleshooting, see <a href="https://moonshotai.github.io/kimi-code/zh/guides/ides">Using in IDEs</a>; for the full capability matrix, see the <a href="https://moonshotai.github.io/kimi-code/zh/reference/kimi-acp"><code>kimi acp</code> reference</a>.</p>
+<h3>Documentation</h3>
+<ul><li><a href="https://moonshotai.github.io/kimi-code/zh/guides/getting-started">Getting Started</a></li><li><a href="https://moonshotai.github.io/kimi-code/zh/guides/interaction">Interaction and approvals</a></li><li><a href="https://moonshotai.github.io/kimi-code/zh/guides/sessions">Sessions</a></li><li><a href="https://moonshotai.github.io/kimi-code/zh/guides/ides">Using in IDEs (ACP)</a></li><li><a href="https://moonshotai.github.io/kimi-code/zh/configuration/config-files">Configuration</a></li><li><a href="https://moonshotai.github.io/kimi-code/zh/reference/kimi-command">Command reference</a></li></ul>
+<h3>Local development</h3>
+<p>Requirements: Node.js ≥ 24.15.0, pnpm 10.33.0.</p>
+<pre><code class=language-sh>git clone https://github.com/MoonshotAI/kimi-code.git
+cd kimi-code
+pnpm install</code></pre>
+<pre><code class=language-sh>pnpm dev:cli    # run the CLI in development mode
+pnpm test       # run tests
+pnpm typecheck  # TypeScript checks
+pnpm lint       # run oxlint
+pnpm build      # build all packages</code></pre>
+<p>For the full contribution process, see <a href="https://github.com/MoonshotAI/kimi-code/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+<h3>Community</h3>
+<ul><li><a href="https://github.com/MoonshotAI/kimi-code/issues">Issues</a></li><li>To report security vulnerabilities, see <a href="https://github.com/MoonshotAI/kimi-code/blob/main/SECURITY.md">SECURITY.md</a>.</li></ul>
+<h3>Acknowledgements</h3>
+<p>Our TUI is built on top of <a href="https://github.com/earendil-works/pi-mono/tree/main/packages/tui"><code>pi-tui</code></a>. We sincerely thank the authors of <code>pi-tui</code> for their work.</p>
+<h3>License</h3>
+<p>Released under the <a href="https://github.com/MoonshotAI/kimi-code/blob/main/LICENSE">MIT</a> license.</p>
+</section>
+<h2>What this means for US developers</h2>
+<p>The Chinese README matches the English one almost line for line, which suggests Moonshot is aiming at both markets equally. For US teams, the key points are the MIT license, a single-binary install that avoids Node.js dependency problems, and ACP support that plugs into Zed and JetBrains. Lifecycle hooks let you block risky tool calls, a practical guardrail for company rollouts. By default the agent talks to Moonshot&#x27;s hosted Kimi models. If your code can&#x27;t leave your network, set it up for another compatible provider and check what data the CLI sends before rolling it out. Our <a href="/articles/kimi-code-cli/">English-source summary of Kimi Code CLI</a> covers the same tool.</p><p class="srcnote">Translated from the Chinese original by MoxBench. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
+Data from Hugging Face, ModelScope, GitHub, arXiv and official blogs; license summaries are not legal advice. Built 2026-11-02.</div></footer></body></html>

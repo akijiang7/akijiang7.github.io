@@ -1,14 +1,215 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Baidu&#x27;s Unlimited-OCR 2 parses documents of any length with a fixed attention budget | MoxBench</title><meta name="description" content="Baidu has released Unlimited-OCR 2, an MIT-licensed vision-language model for document parsing. It is built to handle very long documents, including ones w"><link rel="canonical" href="https://akijiang7.github.io/articles/baidu-unlimited-ocr-2/">
-<meta property="og:title" content="Baidu&#x27;s Unlimited-OCR 2 parses documents of any length with a fixed attention budget | MoxBench"><meta property="og:description" content="Baidu has released Unlimited-OCR 2, an MIT-licensed vision-language model for document parsing. It is built to handle very long documents, including ones w"><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/baidu-unlimited-ocr-2/">
+<title>Baidu&#x27;s Unlimited-OCR 2 parses documents of any length with a fixed attention budget | MoxBench</title><meta name="description" content="## Summary"><link rel="canonical" href="https://akijiang7.github.io/articles/baidu-unlimited-ocr-2/">
+<meta property="og:title" content="Baidu&#x27;s Unlimited-OCR 2 parses documents of any length with a fixed attention budget | MoxBench"><meta property="og:description" content="## Summary"><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/baidu-unlimited-ocr-2/">
 <meta name="twitter:card" content="summary"><link rel="stylesheet" href="/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Baidu's Unlimited-OCR 2 parses documents of any length with a fixed attention budget", "datePublished": "2026-10-27", "isBasedOn": ["https://huggingface.co/baidu/Unlimited-OCR-2"], "publisher": {"@type": "Organization", "name": "MoxBench"}, "url": "https://akijiang7.github.io/articles/baidu-unlimited-ocr-2/"}</script></head><body>
 <header><div class="wrap"><nav><a class="logo" href="/">MoxBench</a><a href="/">Home</a><a href="/articles/">Articles</a><a href="/latest/">Latest</a><a href="/models/">Models</a><a href="/licenses/">Licenses</a><a href="/archive/">Archive</a><a href="/about/">About</a></nav></div></header>
-<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / Baidu · 2026-10-27</p><h1>Baidu&#x27;s Unlimited-OCR 2 parses documents of any length with a fixed attention budget</h1><article class="card"><p class="lede">Baidu has released Unlimited-OCR 2, an MIT-licensed vision-language model for document parsing. It is built to handle very long documents, including ones with hundreds of pages, without memory and latency growing as the document gets longer.</p>
+<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / Baidu · 2026-10-27</p><h1>Baidu&#x27;s Unlimited-OCR 2 parses documents of any length with a fixed attention budget</h1><p class="jump"><a href="#full-text">Read the full text ↓</a></p><article class="card"><h2>Summary</h2>
+<p class="lede">Baidu has released Unlimited-OCR 2, an MIT-licensed vision-language model for document parsing. It is built to handle very long documents, including ones with hundreds of pages, without memory and latency growing as the document gets longer.</p>
 <h2>What happened</h2>
 <p>The first Unlimited-OCR appeared in June 2026, presented as an attempt to push DeepSeek-OCR &quot;one step further.&quot; Version 2 adds Sparse Reference Sliding Window Attention (SR-SWA). Baidu says it compresses the text-visual attention across a very long sequence into a fixed-size set of working references, 512 tokens for example. That keeps per-step decoding latency and memory nearly constant however long the document is, which Baidu calls &quot;unlimited-horizon parsing&quot; within a finite context window. Alongside the model, Baidu released MarathonDocBench, a benchmark for ultra-long document parsing, and published a paper on arXiv on November 2.</p>
 <h2>Key details</h2>
 <ul><li><b>Task:</b> image-text-to-text OCR and document parsing, multilingual.</li><li><b>License:</b> MIT.</li><li><b>Parameter count:</b> not stated on the model card.</li><li><b>Claimed results:</b> Baidu reports state-of-the-art results on both dozens-of-pages benchmarks (such as MPDocBench) and hundred-page benchmarks (MarathonDocBench). The model card gives no single headline number.</li><li><b>How to run:</b> with Transformers (tested on Python 3.10, torch 2.13.0, transformers 4.52.1, on an A800-80GB) using <code>trust_remote_code=True</code>. <code>infer_multi</code> parses all pages of a document in one request so the model can use context across pages. <code>infer</code> handles single pages with dynamic tiling. For serving, Baidu recommends a customized SGLang build, and the model card documents memory-tuning flags for it.</li><li><b>Other access:</b> ModelScope (PaddlePaddle/Unlimited-OCR-2), Baidu Cloud, and a Hugging Face Space demo. Training is supported through ms-swift.</li></ul>
 <h2>What this means for US developers</h2>
 <p>If you are building RAG or document-ingestion pipelines over long contracts, filings or manuals, the main pitch is parsing a whole document in one pass with cross-page context, without splitting it into chunks. The MIT license makes commercial use simple. Expect some setup effort. The model needs <code>trust_remote_code</code>, pinned library versions and a custom SGLang wheel for production serving. Test it on your own document types against your current OCR stack before switching.</p>
-<p class="srcnote">Source: <a href="https://huggingface.co/baidu/Unlimited-OCR-2">baidu/Unlimited-OCR-2 model card on Hugging Face</a></p><p class="srcnote">Translated and edited by MoxBench from the official model card / README. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
+<hr class="ftdiv"><section id="full-text" class="fulltext"><h2>Full text</h2>
+<p><i>Full text of the original model card, reproduced under its MIT License.. Images and badges are omitted; relative links point to the source repository. Original: <a href="https://huggingface.co/baidu/Unlimited-OCR-2">https://huggingface.co/baidu/Unlimited-OCR-2</a>.</i></p>
+<p>Unlimited OCR Works 2</p>
+<p>Pioneering the OCR-3.0 Era: From Long- to Unlimited-Horizon Parsing.</p>
+<h3>Release</h3>
+<ul><li>[2026/11/02] 📄 The paper of <b>Unlimited OCR 2</b> is now available on <a href="https://arxiv.org/abs/2610.39308">arXiv</a>.</li><li>[2026/10/27] 📊 We release <a href="https://huggingface.co/datasets/baidu/MarathonDocBench"><b>MarathonDocBench</b></a>, a new benchmark for ultra-long document parsing.</li><li>[2026/10/27] 🤝 Thanks to the <a href="https://github.com/modelscope">ModelScope community</a> for their support. Our model is now available at <a href="https://modelscope.cn/models/PaddlePaddle/Unlimited-OCR-2">ModelScope</a>.</li><li>[2026/10/27] 🤝 Thanks to the Baidu Cloud team for their support. Our model is now available on <a href="https://cloud.baidu.com/doc/OCR/s/fmr1p39gb">Baidu Cloud</a>.</li><li>[2026/10/27] 🤝 Thanks to <a href="https://x.com/_akhaliq">AK</a> for creating a new demo for us. Try it at <a href="https://huggingface.co/spaces/baidu/Unlimited-OCR-2">Unlimited-OCR-2</a>.</li><li>[2026/10/27] 🚀 We release <a href="https://github.com/baidu/Unlimited-OCR"><b>Unlimited OCR 2</b></a>, achieving unlimited-horizon parsing with SR-SWA.</li><li>[2026/07/21] 🤝 Thanks to the <a href="https://github.com/modelscope/ms-swift">ms-swift community</a> for their support, our model now supports training with <a href="https://github.com/modelscope/ms-swift">ms-swift</a>.</li><li>[2026/07/03] 🤝 Thanks to the Baidu Cloud team for their support. Our model is now available on <a href="https://cloud.baidu.com/doc/OCR/s/fmr1p39gb">Baidu Cloud</a>.</li><li>[2026/06/28] 🤝 Thanks to the <a href="https://github.com/vllm-project/vllm">vLLM community</a> and <a href="https://github.com/gty111">Tianyu Guo</a> for their support, our model now supports vLLM inference.</li><li>[2026/06/24] 🤝 Thanks to <a href="https://x.com/_akhaliq">AK</a> for creating a demo for us. It is now available at <a href="https://huggingface.co/spaces/baidu/Unlimited-OCR">Hugging Face Spaces</a>.</li><li>[2026/06/23] 📄 Our paper is now available on <a href="https://arxiv.org/abs/2606.23050">arXiv</a>.</li><li>[2026/06/23] 🤝 Thanks to the <a href="https://github.com/modelscope">ModelScope community</a> for their support. Our model is now available at <a href="https://modelscope.cn/models/PaddlePaddle/Unlimited-OCR">ModelScope</a>.</li><li>[2026/06/22] 🚀 We present <a href="https://github.com/baidu/Unlimited-OCR/tree/UnlimitedOCR1.0">Unlimited-OCR</a>, aiming to push <a href="https://github.com/deepseek-ai/DeepSeek-OCR">Deepseek-OCR</a> one step further.</li></ul>
+<h3>What&#x27;s New in 2</h3>
+<ul><li>Sparse Reference Sliding Window Attention (SR-SWA): Compresses text-visual attention interactions from ultra-long sequences down to a fixed-size set of working references (e.g., 512 tokens). This bounds computational complexity, keeping per-step decoding latency and memory footprint nearly constant regardless of document length.</li><li>From Long- to Unlimited-Horizon Parsing: Powered by SR-SWA, Unlimited-OCR 2 achieves true, unbounded document parsing within a finite context window—effectively eliminating quadratic attention scaling and memory bottlenecks as documents grow.</li><li>Ultra-Long Document Parsing SOTA: Achieves state-of-the-art performance across both dozens-of-pages benchmarks (e.g., MPDocBench) and extreme hundred-page benchmarks (e.g., MarathonDocBench).</li></ul>
+<h3>Inference</h3>
+<blockquote>Unlimited OCR 2 supports <b>Transformers</b> (native, for quick tests) and <b>SGLang</b> (recommended for serving).</blockquote>
+<h4>Transformers</h4>
+<p>Tested with Python 3.10, <code>torch==2.13.0</code>, <code>transformers==4.52.1</code>, <code>huggingface-hub==0.36.0</code>, <code>tokenizers==0.21.4</code>, on an NVIDIA A800-80GB:</p>
+<pre><code class=language-shell>pip install torch==2.13.0 torchvision pillow transformers==4.52.1 huggingface-hub==0.36.0 \
+  tokenizers==0.21.4 addict==2.4.0 einops==0.8.2 easydict==1.13</code></pre>
+<p>Load the model once:</p>
+<pre><code class=language-python>import torch
+from transformers import AutoModel, AutoTokenizer
+
+model_name = &quot;baidu/Unlimited-OCR-2&quot;
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+model = AutoModel.from_pretrained(model_name, trust_remote_code=True, use_safetensors=True,
+                                  torch_dtype=torch.bfloat16).eval().cuda()</code></pre>
+<p><b>Multi-page inference</b> (<code>infer_multi</code>). All pages of a document are parsed in one request, so the model can use cross-page context. Pass the page images in page order:</p>
+<pre><code class=language-python>pages = [f&quot;your_doc/page_{i}.jpg&quot; for i in range(1, 8)]
+
+text, num_tokens = model.infer_multi(tokenizer, image_files=pages,
+                                     output_path=&quot;output/multi&quot;, save_results=True)</code></pre>
+<p>The prompt is built automatically as <code>&quot;&lt;PAGE&gt;&lt;image&gt;&quot; * num_pages + &quot;Multi page parsing.&quot;</code>, and each page is encoded as one global view (base mode). The output contains one <code>&lt;PAGE&gt;</code> per input page, in the same order as <code>image_files</code>.</p>
+<p><b>Single-page inference</b> (<code>infer</code>). A single page is encoded with dynamic tiling (gundam mode) by default:</p>
+<pre><code class=language-python>text = model.infer(tokenizer, image_file=&quot;your_doc/page_1.jpg&quot;,
+                   output_path=&quot;output/single&quot;, save_results=True)</code></pre>
+<h4>SGLang</h4>
+<p>Set up the environment (uv-managed virtualenv, Python 3.10) and install the customized SGLang wheel <code>sglang-0.5.20.dev13+g75b9b06b02-py3-none-any.whl</code>, plus PyMuPDF for PDF-to-image conversion:</p>
+<pre><code class=language-shell>uv venv --python 3.10
+source .venv/bin/activate
+
+uv pip install wheel/sglang-0.5.20.dev13+g75b9b06b02-py3-none-any.whl
+uv pip install pymupdf==1.27.2.2
+uv pip install fastokens==0.3.2</code></pre>
+<p>Start the SGLang server:</p>
+<pre><code class=language-shell># Page-window scheduling for very long documents (the KV tail of the previous window is reused).
+export SGLANG_UOCR_EANABLE_DOC_LIMIT=1          # 1 = enable, 0 = whole document in one window
+export SGLANG_UOCR_DOC_GUNDAM_PAGE_WINDOW=10    # pages per window (gundam mode)
+export SGLANG_UOCR_DOC_BASE_PAGE_WINDOW=10      # pages per window (base mode)
+export SGLANG_UOCR_MAX_PAGE_TOKENS=20000        # per-page output cap; must be &gt; 0
+# Chunk cap for the SAM attention bias. The built-in default (512) allows a single
+# ~462 MiB allocation and can OOM; 64 is equivalent with a lower peak.
+export SGLANG_OPT_UOCR_SAM_REL_POS_BIAS_MB=64
+# Pass large crop tensors through /dev/shm instead of pickling them into the
+# tokenizer -&gt; scheduler frame.
+export SGLANG_UOCR_SHM_WRAP_MODEL_DATA=1
+export SGLANG_UOCR_SHM_WRAP_MIN_MB=1
+export SGLANG_VLM_CACHE_SIZE_MB=0
+# Reduces fragmentation failures on the large contiguous allocations.
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
+python -m sglang.launch_server \
+    --model-path baidu/Unlimited-OCR-2 \
+    --served-model-name Unlimited-OCR-2 \
+    --chat-template unlimited-ocr \
+    --tokenizer-backend fastokens \
+    --tokenizer-worker-num 8 \
+    --mem-fraction-static 0.7 \
+    --max-running-requests 64 \
+    --max-prefill-tokens 2048 \
+    --enable-custom-logit-processor \
+    --enable-streaming-session \
+    --allow-auto-truncate \
+    --disable-radix-cache \
+    --mm-preprocess-cache-size-mb 0 \
+    --cuda-graph-backend-decode full --cuda-graph-max-bs-decode 64 \
+    --cuda-graph-backend-prefill full \
+    --cuda-graph-max-bs-prefill 16384 \
+    --cuda-graph-bs-prefill 1024 2048 \
+    --cuda-graph-config &#x27;{&quot;prefill&quot;: {&quot;backend&quot;: &quot;full&quot;, &quot;full_prefill_max_req&quot;: 64}}&#x27; \
+    --host 0.0.0.0 \
+    --port 10000</code></pre>
+<p>Notes on the knobs that matter for memory:</p>
+<ul><li><code>--mem-fraction-static</code> is the share reserved for weights + KV. <code>0.75</code> leaves too little headroom at 32+ concurrent requests; <code>0.7</code> is stable.</li><li><code>--max-prefill-tokens</code> drives a temporary tensor of roughly <code>[tokens, context/32]</code>, so memory grows linearly with it: <code>4096 -&gt; 2048</code> halves that peak.</li><li>The largest <code>--cuda-graph-bs-prefill</code> bucket must equal <code>--max-prefill-tokens</code>. A smaller one makes oversized batches fall back to eager; a larger one is never used and only wastes capture memory.</li><li><code>--cuda-graph-config</code>&#x27;s <code>full_prefill_max_req</code> is the request-slot count for the full-prefill CUDA graph. The default (8) makes 16/32 concurrency fall back to eager.</li><li>A smaller page window lowers peak memory but hurts cross-page merging, since blocks that continue across a window boundary lose their context.</li></ul>
+<p>To parse a whole document in one window instead (<code>SGLANG_UOCR_EANABLE_DOC_LIMIT=0</code>).</p>
+<p>Send requests to the OpenAI-compatible API:</p>
+<pre><code class=language-python>import base64
+import json
+import os
+import tempfile
+
+import fitz
+import requests
+from sglang.srt.sampling.custom_logit_processor import DeepseekOCRNoRepeatNGramLogitProcessor
+
+server_url = &quot;http://127.0.0.1:10000&quot;
+NGRAM_PROCESSOR = DeepseekOCRNoRepeatNGramLogitProcessor.to_str()
+
+session = requests.Session()
+session.trust_env = False
+
+def pdf_to_images(pdf_path, dpi=300):
+    doc = fitz.open(pdf_path)
+    tmp_dir = tempfile.mkdtemp(prefix=&quot;pdf_ocr_&quot;)
+    mat = fitz.Matrix(dpi / 72, dpi / 72)
+    image_paths = []
+    for i, page in enumerate(doc):
+        image_path = os.path.join(tmp_dir, f&quot;page_{i + 1:04d}.png&quot;)
+        page.get_pixmap(matrix=mat).save(image_path)
+        image_paths.append(image_path)
+    doc.close()
+    return image_paths
+
+def encode_image(image_path):
+    ext = os.path.splitext(image_path)[1].lower()
+    mime = &quot;image/jpeg&quot; if ext in (&quot;.jpg&quot;, &quot;.jpeg&quot;) else f&quot;image/{ext.lstrip(&#x27;.&#x27;)}&quot;
+    with open(image_path, &quot;rb&quot;) as f:
+        data = base64.b64encode(f.read()).decode(&quot;utf-8&quot;)
+    return {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: f&quot;data:{mime};base64,{data}&quot;}}
+
+def build_content(image_paths):
+    prompt = &quot;&lt;PAGE&gt;&lt;image&gt;&quot; * len(image_paths) + &quot;Multi page parsing.&quot;
+    return [encode_image(path) for path in image_paths] + [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: prompt}]
+
+def generate(image_paths, crop_mode=True, tokens_per_page=8000):
+    # A wider n-gram window for multi-page documents, as in our evaluation setup.
+    window_size = 1024 if len(image_paths) &gt; 1 else 128
+    payload = {
+        &quot;model&quot;: &quot;Unlimited-OCR-2&quot;,
+        &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: build_content(image_paths)}],
+        # Must be positive: it is the global output budget for the whole document.
+        &quot;max_tokens&quot;: tokens_per_page * len(image_paths),
+        &quot;temperature&quot;: 0,
+        &quot;skip_special_tokens&quot;: False,
+        &quot;images_config&quot;: {&quot;crop_mode&quot;: crop_mode},  # True = gundam (tiles), False = base
+        &quot;custom_logit_processor&quot;: NGRAM_PROCESSOR,
+        &quot;custom_params&quot;: {
+            &quot;ngram_size&quot;: 35,
+            &quot;window_size&quot;: window_size,
+            &quot;page_token_id&quot;: 128827,   # &lt;PAGE&gt; marker id (= sparse_attention_config.page_token_id)
+            &quot;eos_token_id&quot;: 1,         # = eos_token_id in config.json
+            &quot;max_page_tokens&quot;: 20000,  # per-page output cap, &lt;= 0 disables the page guard
+        },
+        &quot;stream&quot;: True,
+    }
+    response = session.post(
+        f&quot;{server_url}/v1/chat/completions&quot;,
+        headers={&quot;Content-Type&quot;: &quot;application/json&quot;},
+        data=json.dumps(payload),
+        timeout=6000,
+        stream=True,
+    )
+    response.raise_for_status()
+
+    chunks = []
+    for line in response.iter_lines(decode_unicode=True):
+        if not line or not line.startswith(&quot;data:&quot;):
+            continue
+        data = line[len(&quot;data:&quot;):].strip()
+        if data == &quot;[DONE]&quot;:
+            break
+        event = json.loads(data)
+        choices = event.get(&quot;choices&quot;) or []  # the final chunk carries usage only
+        if not choices:
+            continue
+        delta = (choices[0].get(&quot;delta&quot;) or {}).get(&quot;content&quot;) or &quot;&quot;
+        if delta:
+            print(delta, end=&quot;&quot;, flush=True)
+            chunks.append(delta)
+    return &quot;&quot;.join(chunks)
+
+# Multi page: all pages of a document, parsed in one request
+pages = [f&quot;your_doc/page_{i}.jpg&quot; for i in range(1, 8)]
+generate(pages)
+
+# Single page
+generate([&quot;your_doc/page_1.jpg&quot;])
+
+# PDF
+generate(pdf_to_images(&quot;your_doc.pdf&quot;, dpi=300))</code></pre>
+<h3>Visualization</h3>
+<p>Unlimited-horizon parsing in action: a full-length book parsed in a single request (replay).</p>
+<h3>Acknowledgement</h3>
+<p>We would like to thank <a href="https://github.com/deepseek-ai/DeepSeek-OCR">Deepseek-OCR</a>, <a href="https://github.com/deepseek-ai/DeepSeek-OCR-2">Deepseek-OCR-2</a>, <a href="https://github.com/PaddlePaddle/PaddleOCR">PaddleOCR</a> for their valuable models and ideas, and <a href="https://github.com/sgl-project/sglang">SGLang</a> for the serving framework.</p>
+<h3>Citation</h3>
+<pre><code class=language-bibtex>@misc{wei2026unlimitedocrworks2,
+      title={Unlimited OCR Works 2}, 
+      author={Baidu ERNIE Team},
+      year={2026},
+      eprint={2610.39308},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2610.39308}, 
+}
+
+@misc{yin2026unlimitedocrworks,
+      title={Unlimited OCR Works}, 
+      author={Youyang Yin and Huanhuan Liu and YY and Qunyi Xie and Chaorun Liu and Shiqi Yang and Shaohua Wang and Zhanlong Liu and Hao Zou and Jinyue Chen and Shu Wei and Jingjing Wu and Mingxin Huang and Zhen Wu and Guibin Wang and Tengyu Du and Lei Jia},
+      year={2026},
+      eprint={2606.23050},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2606.23050}, 
+}</code></pre>
+</section>
+<p class="srcnote">Source: <a href="https://huggingface.co/baidu/Unlimited-OCR-2">baidu/Unlimited-OCR-2 model card on Hugging Face</a></p><p class="srcnote">Summary written by MoxBench from the official model card / README. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
 Data from Hugging Face, ModelScope, GitHub, arXiv and official blogs; license summaries are not legal advice. Built 2026-11-02.</div></footer></body></html>

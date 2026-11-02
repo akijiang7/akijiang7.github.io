@@ -1,14 +1,94 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Qwen Code: Alibaba&#x27;s open-source coding agent expands beyond the terminal | MoxBench</title><meta name="description" content="Qwen Code, the Qwen team&#x27;s open-source AI coding agent has about 28,900 GitHub stars (as of Nov 2, 2026). It now runs in the terminal, in editors, as a des"><link rel="canonical" href="https://akijiang7.github.io/articles/qwen-code/">
-<meta property="og:title" content="Qwen Code: Alibaba&#x27;s open-source coding agent expands beyond the terminal | MoxBench"><meta property="og:description" content="Qwen Code, the Qwen team&#x27;s open-source AI coding agent has about 28,900 GitHub stars (as of Nov 2, 2026). It now runs in the terminal, in editors, as a des"><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/qwen-code/">
+<title>Qwen Code: Alibaba&#x27;s open-source coding agent expands beyond the terminal | MoxBench</title><meta name="description" content="## Summary"><link rel="canonical" href="https://akijiang7.github.io/articles/qwen-code/">
+<meta property="og:title" content="Qwen Code: Alibaba&#x27;s open-source coding agent expands beyond the terminal | MoxBench"><meta property="og:description" content="## Summary"><meta property="og:type" content="website"><meta property="og:url" content="https://akijiang7.github.io/articles/qwen-code/">
 <meta name="twitter:card" content="summary"><link rel="stylesheet" href="/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Qwen Code: Alibaba's open-source coding agent expands beyond the terminal", "datePublished": "2026-11-02", "isBasedOn": ["https://github.com/QwenLM/qwen-code"], "publisher": {"@type": "Organization", "name": "MoxBench"}, "url": "https://akijiang7.github.io/articles/qwen-code/"}</script></head><body>
 <header><div class="wrap"><nav><a class="logo" href="/">MoxBench</a><a href="/">Home</a><a href="/articles/">Articles</a><a href="/latest/">Latest</a><a href="/models/">Models</a><a href="/licenses/">Licenses</a><a href="/archive/">Archive</a><a href="/about/">About</a></nav></div></header>
-<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / Qwen (Alibaba) · 2026-11-02</p><h1>Qwen Code: Alibaba&#x27;s open-source coding agent expands beyond the terminal</h1><article class="card"><p class="lede">Qwen Code, the Qwen team&#x27;s open-source AI coding agent has <a href="https://github.com/QwenLM/qwen-code">about 28,900 GitHub stars (as of Nov 2, 2026)</a>. It now runs in the terminal, in editors, as a desktop app, in the browser and in chat apps, and it works with OpenAI, Anthropic, Gemini and Qwen APIs as well as local models.</p>
+<main><div class="wrap"><p class="meta"><a href="/articles/">Articles</a> / Qwen (Alibaba) · 2026-11-02</p><h1>Qwen Code: Alibaba&#x27;s open-source coding agent expands beyond the terminal</h1><p class="jump"><a href="#full-text">Read the full text ↓</a></p><article class="card"><h2>Summary</h2>
+<p class="lede">Qwen Code, the Qwen team&#x27;s open-source AI coding agent has <a href="https://github.com/QwenLM/qwen-code">about 28,900 GitHub stars (as of Nov 2, 2026)</a>. It now runs in the terminal, in editors, as a desktop app, in the browser and in chat apps, and it works with OpenAI, Anthropic, Gemini and Qwen APIs as well as local models.</p>
 <h2>What happened</h2>
 <p>The current README describes Qwen Code as &quot;the open-source AI coding agent for your terminal, editor, desktop, browser, and chat.&quot; Built-in agent features include Auto-Memory, Auto-Skills, SubAgents, Agent Teams and MCP support. The team says the project is &quot;actively iterating on itself&quot;: it uses its own agent and models to file issues, open pull requests, review code and run tests.</p>
 <h2>Key details</h2>
 <ul><li><b>Interfaces:</b> terminal (<code>qwen</code>), a desktop app for macOS, Windows and Linux, an experimental web UI (<code>qwen serve --open</code>), and plugins for VS Code, Zed and JetBrains. It also connects to Telegram, DingTalk, WeChat and Feishu.</li><li><b>Automation:</b> headless mode (<code>qwen -p &quot;...&quot;</code>) for scripts and CI/CD, SDKs for TypeScript, Python and Java, and an experimental daemon that serves clients over HTTP + SSE (ACP). Computer-use tools are available as native MCP tools.</li><li><b>Model providers:</b> OpenAI, Anthropic, Gemini and Qwen APIs, any third-party provider, or local models via Ollama or vLLM. You can switch providers at runtime.</li><li><b>Install:</b> a standalone script for Linux/macOS and Windows, <code>npm install -g @qwen-code/qwen-code@latest</code> (Node.js 22+), or <code>brew install qwen-code</code>. Run <code>/auth</code> inside a session to set a provider and API key.</li><li><b>License:</b> Apache 2.0 (per the repository&#x27;s license metadata).</li></ul>
 <h2>What this means for US developers</h2>
 <p>Qwen Code is a credible open-source alternative to proprietary terminal agents, and it is not tied to Qwen models. You can point it at Claude, GPT, Gemini or a local vLLM server. Headless mode and the SDKs make it practical to embed in CI or internal tools without per-seat licensing. One detail to note: the default install script downloads from an Alibaba Cloud bucket in Hangzhou. Teams with supply-chain policies may prefer the npm or Homebrew route, or building from source.</p>
-<p class="srcnote">Source: <a href="https://github.com/QwenLM/qwen-code">QwenLM/qwen-code README on GitHub</a></p><p class="srcnote">Translated and edited by MoxBench from the official model card / README. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
+<hr class="ftdiv"><section id="full-text" class="fulltext"><h2>Full text</h2>
+<p><i>Full text of the original README, reproduced under its Apache License 2.0.. Images and badges are omitted; relative links point to the source repository. Original: <a href="https://github.com/QwenLM/qwen-code">https://github.com/QwenLM/qwen-code</a>.</i></p>
+<p><b>The open-source AI coding agent for your terminal, editor, desktop, browser, and chat.</b></p>
+<h3>Why Qwen Code?</h3>
+<ul><li><b>Agentic out of the box</b> — Auto-Memory, Auto-Skills, SubAgents, Agent Teams, and MCP. Dynamic workflows, zero setup.</li><li><b>Open-source, inside and out</b> — The framework and the Qwen models are open-source. They evolve together. No vendor lock-in.</li><li><b>Multi-protocol</b> — Supports OpenAI, Anthropic, Gemini, and Qwen APIs. Any third-party provider or local model (Ollama / vLLM). Switch at runtime.</li><li><b>Beyond the terminal</b> — IDE plugins, Desktop app, Web UI, SDKs, and chat integrations (Telegram / DingTalk / WeChat / Feishu).</li></ul>
+<blockquote>[!TIP] Qwen Code is actively iterating on itself — using its own agent and models to file issues, submit PRs, review code, and run tests. Powered by the community, driven by AI.</blockquote>
+<h3>Installation</h3>
+<p><b>Linux / macOS:</b></p>
+<pre><code class=language-bash>curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash</code></pre>
+<p><b>Windows:</b></p>
+<pre><code class=language-powershell>irm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex</code></pre>
+<blockquote>Restart your terminal after installation to ensure environment variables take effect.</blockquote>
+<p>NPM / Homebrew</p>
+<p><b>NPM</b> (requires <a href="https://nodejs.org/">Node.js 22+</a>):</p>
+<pre><code class=language-bash>npm install -g @qwen-code/qwen-code@latest</code></pre>
+<p><b>Homebrew</b> (macOS / Linux):</p>
+<pre><code class=language-bash>brew install qwen-code</code></pre>
+<h3>Quick Start</h3>
+<p>Open a terminal in your project and start Qwen Code:</p>
+<pre><code class=language-bash>cd /path/to/your-project
+qwen</code></pre>
+<p>Inside the session, run <code>/auth</code> to configure your provider and API key. Then try:</p>
+<pre><code class=language-text>Explain this repository and show me where to start.</code></pre>
+<p>See the <a href="https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/">Authentication Guide</a> and <a href="https://qwenlm.github.io/qwen-code-docs/en/users/configuration/settings/">Settings Reference</a> for detailed setup.</p>
+<p>See the terminal interface</p>
+<h3>How to Use Qwen Code</h3>
+<p>Choose the interface that fits your workflow:</p>
+<div class="tbl"><table><thead><tr><th>Interface</th><th>Get started</th></tr></thead><tbody><tr><td><b>Terminal</b></td><td>Run <code>qwen</code> in your project — see Quick Start.</td></tr><tr><td><b>Desktop</b></td><td><a href="https://github.com/QwenLM/qwen-code/releases/tag/desktop-latest">Download Qwen Code Desktop</a> for macOS, Windows, and Linux.</td></tr><tr><td><b>Web</b></td><td>Run <code>qwen serve --open</code> to open the <a href="https://qwenlm.github.io/qwen-code-docs/en/users/qwen-serve/">Web UI</a> in your browser. _(experimental)_</td></tr><tr><td><b>Editor</b></td><td>Set up <a href="https://qwenlm.github.io/qwen-code-docs/en/users/integration-vscode/">VS Code</a>, <a href="https://qwenlm.github.io/qwen-code-docs/en/users/integration-zed/">Zed</a>, or <a href="https://qwenlm.github.io/qwen-code-docs/en/users/integration-jetbrains/">JetBrains</a>.</td></tr><tr><td><b>Chat</b></td><td>Connect <a href="https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/telegram/">Telegram</a>, <a href="https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/dingtalk/">DingTalk</a>, <a href="https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/weixin/">WeChat</a>, or <a href="https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/feishu/">Feishu</a>, then run <code>qwen channel start</code>.</td></tr></tbody></table></div>
+<p>For automation and custom integrations:</p>
+<ul><li><b>Headless</b> — Run <code>qwen -p &quot;...&quot;</code> in scripts, CI/CD, or batch jobs.</li><li><b>SDKs</b> — Build with <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/packages/sdk-typescript/README.md">TypeScript</a>, <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/packages/sdk-python/README.md">Python</a>, or <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/packages/sdk-java/qwencode/README.md">Java</a>.</li><li><b>Daemon</b> — Run <code>qwen serve</code> to connect clients over HTTP + SSE (ACP). _(experimental)_ <a href="https://qwenlm.github.io/qwen-code-docs/en/users/qwen-serve/">Daemon guide</a>.</li><li><b>Computer Use</b> — Set up <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/packages/cua-driver/README.md#agent-integration">native MCP tools</a> or <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/packages/node-repl/README.md#usage">Node REPL + SDK</a> in Qwen Code, Claude Code, or Codex.</li></ul>
+<p>SDK example (Python)</p>
+<pre><code class=language-python>import asyncio
+
+from qwen_code_sdk import is_sdk_result_message, query
+
+async def main() -&gt; None:
+    result = query(
+        &quot;Summarize the repository layout.&quot;,
+        {
+            &quot;cwd&quot;: &quot;/path/to/project&quot;,
+            &quot;path_to_qwen_executable&quot;: &quot;qwen&quot;,
+        },
+    )
+
+    async for message in result:
+        if is_sdk_result_message(message):
+            print(message[&quot;result&quot;])
+
+asyncio.run(main())</code></pre>
+<h3>Daemon Mode</h3>
+<p>Run Qwen Code as a long-lived service when you want browser, editor, SDK, and automation clients to share agent sessions without each starting a separate process. The daemon provides the built-in Web Shell and an HTTP + SSE API, supports multiple workspaces, and lets clients reconnect to active sessions.</p>
+<p>Start it in the foreground and open the Web Shell:</p>
+<pre><code class=language-bash>qwen serve --open</code></pre>
+<p>The default address is <code>http://127.0.0.1:4170</code>. To run and manage it in the background instead:</p>
+<pre><code class=language-bash>qwen daemon start
+qwen daemon status
+qwen daemon logs -f
+qwen daemon stop</code></pre>
+<p>By default, the daemon listens on loopback without bearer authentication; any local process that can reach it can use the full API, including code execution. On shared or untrusted hosts, set <code>QWEN_SERVER_TOKEN</code> and use <code>--require-auth</code>. See the <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/docs/users/qwen-serve.md">Daemon guide</a> for workspaces, authentication, remote access, and the API.</p>
+<h3>Capabilities</h3>
+<p>If you know Claude Code, you already know Qwen Code — and then some. We&#x27;ve put significant effort into <a href="https://github.com/wenshao/codeagents/blob/main/docs/comparison/qwen-code-improvement-report.md">bringing Qwen Code to feature parity with Claude Code</a>, improving both breadth and reliability across the board.</p>
+<div class="tbl"><table><thead><tr><th>Feature</th><th>Qwen Code</th><th>Claude Code</th></tr></thead><tbody><tr><td>SubAgents, Agent Teams, Dynamic Workflows</td><td>✓</td><td>✓</td></tr><tr><td>Auto-Memory, Auto-Skills, Hooks</td><td>✓</td><td>✓</td></tr><tr><td>Built-in Skills (/review, /batch, /loop, /bugfix…)</td><td>✓</td><td>✓</td></tr><tr><td>MCP, Plan Mode, LSP Integration</td><td>✓</td><td>✓</td></tr><tr><td>Auto Mode, Sandbox, Git Worktrees</td><td>✓</td><td>✓</td></tr><tr><td>Computer Use (desktop automation)</td><td>✓</td><td>✓</td></tr><tr><td>IDE Plugins (VS Code / JetBrains / Zed)</td><td>✓</td><td>✓</td></tr><tr><td>SDK</td><td>✓</td><td>✓</td></tr><tr><td>Headless Mode, Session Management</td><td>✓</td><td>✓</td></tr><tr><td>Open-source — model and framework</td><td>✓</td><td>—</td></tr><tr><td>Multi-protocol (OpenAI / Anthropic / Gemini / Qwen + any provider)</td><td>✓</td><td>—</td></tr><tr><td>Agent Arena (multi-model head-to-head on same task)</td><td>✓</td><td>—</td></tr><tr><td>Daemon Mode — <code>qwen serve</code> (multi-client shared agent)</td><td>✓</td><td>—</td></tr><tr><td>IM Channels (Telegram / DingTalk / WeChat / Feishu)</td><td>✓</td><td>—</td></tr></tbody></table></div>
+<h3>Qwen Code Evaluation</h3>
+<p>On <b>SWE-bench Verified</b>, seven Qwen Code versions scored <b>76.40%–77.80%</b> on average using the same Qwen 3.7 Max model (500 tasks, three trials per version).</p>
+<p><a href="https://github.com/QwenLM/qwen-code/blob/HEAD/docs/evaluation.md">Full results and evaluation configuration →</a></p>
+<h3>Ecosystem</h3>
+<ul><li><a href="https://github.com/QwenLM/qwen-code/releases/tag/desktop-latest"><b>Qwen Code Desktop</b></a> — Official desktop app for macOS, Windows, and Linux</li><li><a href="https://github.com/iOfficeAI/AionUi"><b>AionUi</b></a> — A modern GUI for command-line AI tools including Qwen Code</li><li><a href="https://github.com/Piebald-AI/gemini-cli-desktop"><b>Gemini CLI Desktop</b></a> — A cross-platform desktop/web/mobile UI for Qwen Code</li><li><a href="https://github.com/QwenAudio/qwen-audio-agent"><b>qwen-audio-agent</b></a> — Realtime full-duplex voice frontend for Qwen Code over ACP — talk hands-free with barge-in and a local wake word</li></ul>
+<ul><li><a href="https://github.com/openclaw/acpx"><b>🦞 Qwen Code Claw</b></a> — Let other agents (Claude, Codex, etc.) delegate coding tasks to Qwen Code via ACP. Paste this prompt into your agent:</li></ul>
+<pre><code class=language-text>Use Qwen Code as a coding agent. First, fetch and read this skill reference:
+https://raw.githubusercontent.com/QwenLM/qwen-code/refs/heads/main/.qwen/skills/qwen-code-claw/SKILL.md
+Then follow the instructions inside to install, authenticate, and use Qwen Code via acpx for all coding tasks.</code></pre>
+<ul><li><a href="https://github.com/modelstudioai/cli"><b>Aliyun Model Studio CLI</b></a> — Official CLI for Aliyun&#x27;s AI platform (<code>bailian-cli</code>). Extends Qwen Code with image/video generation, knowledge retrieval, app orchestration, and model deployment</li></ul>
+<h3>Privacy</h3>
+<p>See the <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/docs/users/support/tos-privacy.md">Terms of Service and Privacy Notice</a>, including <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/docs/users/support/tos-privacy.md#chrome-extension-and-browser-use">Chrome extension and Browser Use data handling</a>.</p>
+<h3>Contributing</h3>
+<p>Contributions are welcome! See <a href="https://github.com/QwenLM/qwen-code/blob/HEAD/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<h3>Acknowledgments</h3>
+<p>This project was originally based on <a href="https://github.com/google-gemini/gemini-cli">Google Gemini CLI</a> v0.8.2. We gratefully acknowledge the Gemini CLI team&#x27;s excellent work. Starting from Qwen Code v0.1, we stopped syncing with upstream and began independent development as a multi-protocol, multi-platform agent framework with deep integrations for Qwen models and beyond.</p>
+</section>
+<p class="srcnote">Source: <a href="https://github.com/QwenLM/qwen-code">QwenLM/qwen-code README on GitHub</a></p><p class="srcnote">Summary written by MoxBench from the official model card / README. Facts are from the original source; see link above.</p></article></div></main><footer><div class="wrap">MoxBench — China&#x27;s open models, translated and explained. Independent; not affiliated with any model vendor.
 Data from Hugging Face, ModelScope, GitHub, arXiv and official blogs; license summaries are not legal advice. Built 2026-11-02.</div></footer></body></html>
