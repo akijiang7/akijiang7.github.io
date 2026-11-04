@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://akijiang7.github.io/sitemap.xml
-Disallow: /preview-*
